@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private bool attackChange;
     private void HandleAction()
     {
-        if (myBody.attackBusy||isJump) return;
+        if (myBody.attackBusy||PlayerState.Instance.IsJump) return;
         int attackType = 0;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isJump = true;//跳跃状态赋值为true
+            PlayerState.Instance.IsJump = true;//跳跃状态赋值为true
             ReadyJump();//执行准备跳跃方法
             return;
         }
@@ -207,7 +207,6 @@ public class Player : MonoBehaviour
     public float jumpHeight =2.5f;//跳跃高度
     public float aSpeed = -9.8f;//重力加速度
     private Vector2 direction;//移动方向（父物体，xy轴平面）
-    private bool isJump = false;//跳跃状态
     private float velocity_Y;//跳跃速度(子物体)
 
     private Animator ani;//动画控制器(子物体)
@@ -224,13 +223,13 @@ public class Player : MonoBehaviour
             //如果满足
             velocity_Y = 0;// 子物体垂直速度清零
             childTransform.position = rb.position;//子物体position与父物体对齐
-            isJump = false;//则将跳跃状态设置为false，等待下一次跳跃
             gameObject.layer = 9;
             foreach (var render in renders)
             {
                 render.gameObject.layer = 9;
                 render.sortingLayerName = "Itemground";
             }
+            PlayerState.Instance.IsJump = false;//则将跳跃状态设置为false，等待下一次跳跃
         }
         childTransform.Translate(Time.fixedDeltaTime * new Vector3(0, velocity_Y));//子物体按照速度移动
     }
