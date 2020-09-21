@@ -6,7 +6,7 @@
 
 <div style="display:flex; justify-content: space-between; align-content: center;">
     <ul >
-        <li style="margin-top:20px">⚒️ Code by 点木</li>
+        <li style="margin-top:20px">⚒️ Code by <a href="http://modty.top">点木</a> </li>
         <li>✏️本次游戏还原仅供学习，不会进行任何商业用途</li>
         <li>📧我的常用邮箱 2673077461@qq.com</li>
     </ul>
