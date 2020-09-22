@@ -19,10 +19,13 @@ public class Player : MonoBehaviour
     private Vector2 moveVec;
     private Rigidbody2D rb;
     private Renderer[] renders;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        PlayerState.Instance.PlayerPosition = transform.position;
         renders = GetComponentsInChildren<Renderer>();
+
     }
 
     public void Update()
@@ -122,6 +125,7 @@ public class Player : MonoBehaviour
         move = false;
         bool isIdle = moveDir[0] == 0 && moveDir[1] == 0;
         if (!isIdle) {
+            PlayerState.Instance.PlayerPosition = transform.position;
             if (moveDir[0]!=0)
             {
                 moveAnimArr=new []{moveDir[0],0};
