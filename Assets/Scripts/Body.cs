@@ -13,6 +13,8 @@ public class Body : MonoBehaviour
     [SerializeField]
     private Animator weaponAnimator;
 
+    [SerializeField] 
+    private BoxCollider2D boxCollider2D;
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Y = Animator.StringToHash("Y");
     private static readonly int Move = Animator.StringToHash("Move");
@@ -20,7 +22,7 @@ public class Body : MonoBehaviour
     public bool attackBusy;
     public void DoAttackAnim(int attackType)
     {
-        
+        boxCollider2D.enabled = true;
         selfAnimator.SetInteger(Attack,attackType);
         weaponAnimator.SetInteger(Attack,attackType);
         sackAnimator.SetInteger(Attack,attackType);
@@ -45,6 +47,7 @@ public class Body : MonoBehaviour
     {
         Debug.Log("攻击停止");
         attackBusy = false;
+        boxCollider2D.enabled = false;
         selfAnimator.SetInteger(Attack,0);
         weaponAnimator.SetInteger(Attack,0);
         sackAnimator.SetInteger(Attack,0);
