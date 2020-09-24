@@ -45,7 +45,6 @@ public class Body : MonoBehaviour
     }
     public void NotBusy()
     {
-        Debug.Log("攻击停止");
         attackBusy = false;
         boxCollider2D.enabled = false;
         selfAnimator.SetInteger(Attack,0);

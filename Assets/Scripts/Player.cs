@@ -62,7 +62,6 @@ public class Player : MonoBehaviour
             {
                 myBody.DoMoveAnim(-2,-2,false);
             }
-            Debug.Log("攻击");
             myBody.attackBusy = true;
             moveDir=MousePositionToDirection();
             myBody.DoMoveAnim(moveDir[0],moveDir[1],false);

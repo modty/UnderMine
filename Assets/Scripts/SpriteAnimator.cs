@@ -172,7 +172,6 @@ public class SpriteAnimator : MonoBehaviour
    private bool swipeExchange=false;
    private void DoAttackSwipe(int direction,bool goOn)
    {
-      Debug.Log(direction);
       switch (direction)
       {
          case 0:
