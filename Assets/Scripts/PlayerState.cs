@@ -9,6 +9,9 @@ public class PlayerState
     public Vector2 PlayerPosition;
     // 角色是否跳跃
     public bool IsJump;
+    // 角色朝向
+    public Vector2 moveVec;
+    
     public static PlayerState Instance => _instance ?? (_instance = new PlayerState());
 
 

@@ -12,6 +12,8 @@ public class Body : MonoBehaviour
     private Animator sackAnimator;
     [SerializeField]
     private Animator weaponAnimator;
+    [SerializeField]
+    private GameObject weaponThrow;
 
     [SerializeField] 
     private BoxCollider2D boxCollider2D;
@@ -50,5 +52,14 @@ public class Body : MonoBehaviour
         selfAnimator.SetInteger(Attack,0);
         weaponAnimator.SetInteger(Attack,0);
         sackAnimator.SetInteger(Attack,0);
+    }
+
+    public void startThrowWeapon()
+    {
+        weaponThrow.SetActive(true);
+    }
+    public void stopThrowWeapon()
+    {
+//        weaponThrow.SetActive(false);
     }
 }

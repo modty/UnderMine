@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Rigidbody2D rb;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(0, 0, 800 * Time.deltaTime);
+        rb.position = rb.position + 5f * Time.deltaTime * Vector2.up;
     }
 }
