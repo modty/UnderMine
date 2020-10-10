@@ -14,7 +14,8 @@ public class Body : MonoBehaviour
     private Animator weaponAnimator;
     [SerializeField]
     private GameObject weaponThrow;
-
+    [SerializeField]
+    private Transform weaponPosition;
     [SerializeField] 
     private BoxCollider2D boxCollider2D;
     private static readonly int X = Animator.StringToHash("X");
@@ -24,6 +25,7 @@ public class Body : MonoBehaviour
     public bool attackBusy;
     public void DoAttackAnim(int attackType)
     {
+        if (attackType == 3) weaponPosition.position = PlayerState.Instance.PlayerPosition;
         boxCollider2D.enabled = true;
         selfAnimator.SetInteger(Attack,attackType);
         weaponAnimator.SetInteger(Attack,attackType);
