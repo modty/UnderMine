@@ -22,23 +22,23 @@ AnimationClip:
     - time: 0
       value: {fileID: 7618236389650059221, guid: 76a3cda7e1f90624e9aff755ce5d6e5d,
         type: 3}
-    - time: 0.06666667
+    - time: 0.1
       value: {fileID: 7607167842944173581, guid: 76a3cda7e1f90624e9aff755ce5d6e5d,
         type: 3}
-    - time: 0.13333334
+    - time: 0.2
       value: {fileID: -2962516365379781318, guid: 76a3cda7e1f90624e9aff755ce5d6e5d,
         type: 3}
-    - time: 0.2
+    - time: 0.3
       value: {fileID: 6727124596722799033, guid: 76a3cda7e1f90624e9aff755ce5d6e5d,
         type: 3}
-    - time: 0.26666668
+    - time: 0.4
       value: {fileID: -2086708974158377854, guid: 76a3cda7e1f90624e9aff755ce5d6e5d,
         type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 15
+  m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -63,7 +63,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -90,14 +90,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.5
     functionName: NotBusy
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.5
     functionName: stopThrowWeapon
     data: 
     objectReferenceParameter: {fileID: 0}

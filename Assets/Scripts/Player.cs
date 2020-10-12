@@ -18,15 +18,11 @@ public class Player : MonoBehaviour
     private bool verticalChange=false;
     private PlayerState playerState;
     private Rigidbody2D rb;
-    private Renderer[] renders;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerState=PlayerState.Instance;
         playerState.PlayerPosition = transform.position;
-        renders = GetComponentsInChildren<Renderer>();
-
     }
 
     public void Update()
@@ -138,9 +134,9 @@ public class Player : MonoBehaviour
             {
                 move = true;
             }
-            rb.position = rb.position + 5f * Time.deltaTime * playerState.moveVec;
+            rb.position = rb.position + Constants.ChaMoveSpeed * Time.deltaTime * playerState.moveVec;
             lastMoveDir = moveDir;
-
+            myBody.exchangeSortingLayer(moveDir[0],moveDir[1]);
         }
         myBody.DoMoveAnim(moveAnimArr[0],moveAnimArr[1],move);
     }
@@ -177,7 +173,6 @@ public class Player : MonoBehaviour
                 moveX = -1;
             }
         }
-
         if (verticalChange)
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
@@ -228,11 +223,7 @@ public class Player : MonoBehaviour
             velocity_Y = 0;// 子物体垂直速度清零
             childTransform.position = rb.position;//子物体position与父物体对齐
             gameObject.layer = 9;
-            foreach (var render in renders)
-            {
-                render.gameObject.layer = 9;
-                render.sortingLayerName = "Itemground";
-            }
+
             playerState.IsJump = false;//则将跳跃状态设置为false，等待下一次跳跃
         }
         childTransform.Translate(Time.fixedDeltaTime * new Vector3(0, velocity_Y));//子物体按照速度移动
@@ -241,11 +232,6 @@ public class Player : MonoBehaviour
     void ReadyJump()
     {
         gameObject.layer = 10;
-        foreach (var render in renders)
-        {
-            render.gameObject.layer = 10;
-            render.sortingLayerName = "Skyground";
-        }
         velocity_Y = Mathf.Sqrt(jumpHeight * -2f * aSpeed);
     }
 }

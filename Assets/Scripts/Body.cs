@@ -18,6 +18,16 @@ public class Body : MonoBehaviour
     private Transform weaponPosition;
     [SerializeField] 
     private BoxCollider2D boxCollider2D;
+
+    private Transform weaponSortPosition;
+    private Transform sackSortPosition;
+
+    private void Awake()
+    {
+        weaponSortPosition = weaponAnimator.gameObject.transform;
+        sackSortPosition = sackAnimator.gameObject.transform;
+    }
+
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Y = Animator.StringToHash("Y");
     private static readonly int Move = Animator.StringToHash("Move");
@@ -30,6 +40,7 @@ public class Body : MonoBehaviour
         selfAnimator.SetInteger(Attack,attackType);
         weaponAnimator.SetInteger(Attack,attackType);
         sackAnimator.SetInteger(Attack,attackType);
+
     }
 
     public void DoMoveAnim(int x,int y,bool isMove)
@@ -64,4 +75,27 @@ public class Body : MonoBehaviour
     {
 //        weaponThrow.SetActive(false);
     }
+
+    public void exchangeSortingLayer(int x,int y)
+    {
+        var position = sackSortPosition.position;
+        var position1 = weaponSortPosition.position;
+  
+        if (y > 0&&x==0)
+        {
+            position=new Vector3(position.x,position.y,-2);
+            position1=new Vector3(position1.x,position1.y,2);
+            sackSortPosition.position = position;
+            weaponSortPosition.position = position1;
+        }
+        else
+        {
+            position=new Vector3(position.x,position.y,2);
+            position1=new Vector3(position1.x,position1.y,-2);
+            sackSortPosition.position = position;
+            weaponSortPosition.position = position1;
+        }
+        
+    }
+
 }
